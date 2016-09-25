@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+
+<html>
+    <head>
+        <meta http-equiv="Content-Security-Policy" content="default-src 'self' data: gap: https://ssl.gstatic.com 'unsafe-eval'; style-src 'self' 'unsafe-inline'; media-src *">
+        <meta name="format-detection" content="telephone=no">
+        <meta name="msapplication-tap-highlight" content="no">
+        <meta name="viewport" content="user-scalable=no, initial-scale=1, maximum-scale=1, minimum-scale=1, width=device-width">
+        <link rel="stylesheet" type="text/css" href="css/index.css">
+		<script type="text/javascript" src="js/jquery.min.js"></script>
+        <title>FIT KID</title>
+    </head>
+    <body>
+        <div class="app">
+            <h1>FIT KID</h1>
+			<p>V0.1</p>
+        <div id="sayhello"><h1>App example</h1></div>
+		
+		<div id="loginorregistration">
+		<h3> Press "Registration" if it first time here or "Login" if you have an account </h3>
+		<input type="button" id="Registrationbtn" value="Registration" /> <br> <p>or</p><br>
+		<input type="button" id="loginbtn1" value="Login" />
+		</div>
+		<div id="showloginform">
+			<h2>Input login and password</h2>
+			<form id="loginform">
+				Username: <input id="username" name="username" placeholder="Username"  /><br />
+				Password: <input id="password" name="password" placeholder="Password"  /><br />
+				<input type="button" id="loginbtn" value="Login" />
+			</form>
+		 </div>
+		 <div id="contactform">
+			<h3>Add Info</h3>
+			<div id="addresult></div>
+			<form id="addcontactForm">
+				Firstname: <input id="firstname" name="firstname" placeholder="First name" /><br />
+				Lastname: <input id="lastname" name="lastname" placeholder="Last name" /><br />
+				Email: <input id="email" name="email" placeholder="Email" /><br />
+				<input type="button" id="addContactBtn" value="Save Contact" />
+			</form>
+			</div>
+		</div>
+		 <div id="showaddcontact"><p><input type="button" id="addcontact" value="Add Contact" />
+		 <input type="button" id="showcontacts" value="Show contacts" /></p></div>
+		 <div id="content">
+		 </div>
+		 <div id="showlogout"><p><input type="button" id="logoutbtn" value="Logout" /></p></div>
+            <div id="deviceready" class="blink">
+                <p class="event listening">READY FOR THE DAY?</p>
+                <p class="event received">Device is Ready</p>
+            </div>
+        </div>
+        <script type="text/javascript" src="cordova.js"></script>
+        <script type="text/javascript" src="js/index.js"></script>
+    </body>
+</html>
