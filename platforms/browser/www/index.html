@@ -1,0 +1,123 @@
+<!DOCTYPE html>
+
+<html>
+    <html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+	<meta http-equiv="Content-Security-Policy" content="default-src *; script-src 'self' 'unsafe-inline'; style-src 'self' 'unsafe-inline'; media-src *; img-src 'self' data:">
+        <link rel="stylesheet" type="text/css" href="css/index.css">
+		<script type="text/javascript" src="js/jquery.min.js"></script>
+        <title>FIT KID</title>
+    </head>
+    <body>
+	<img src="img/header.jpg">
+	
+        <div class="app">
+            <h1>FIT KID</h1>
+        <div id="sayhello"><h2>Keeps You Moving !!</h2></div>
+			
+		<div id="loginorregistration">
+		<h3> Press "Registration" if it first time here or "Login" if you have an account </h3>
+		<input type="button" id="Registrationbtn" value="Registration" /> <br> <p>or</p><br>
+		<input type="button" id="loginbtn1" value="Login" />
+		</div>
+		<div id="showloginform">
+			<h2>Input login and password</h2>
+			
+			<form id="loginform">
+				Username: <input id="username" name="username" placeholder="Username"  /><br />
+				Password: <input type="password" id="password" name="password" placeholder="Password"  /><br />
+				<input type="button" id="loginbtn" value="Login" />
+				
+			</form>
+		  <p><a href="https://fitkid.000webhostapp.com/mobileAPI/losspass.php">Forget password?</a></p>
+		  <a href="https://fitkid.000webhostapp.com/mobileAPI/losspass.php">
+   <input type="button" value="Forget password?" />
+</a>
+		 </div>
+		 
+		 <div id="showregistrationform">
+			<h2>Register here</h2>
+			
+			<form id="registrationform">
+				Username: <input id="username1" name="username1" placeholder="Username"  /><br>
+				Password: <input type="password" id="password1" name="password1" placeholder="Password"  /><br>
+				First name: <input id="firstname" name="firstname" placeholder="Firstname"  /><br>
+				Last name : <input id="lastname" name="lastname" placeholder="Lastname"  /><br>
+				Phone number: <input id="phone" name="phone" placeholder="Phone"  /><br>
+				Email adress: <input id="email" name="email" placeholder="Email"  /><br>
+				School name: <input id="school" name="school" placeholder="School"  /><br>
+				Class name: <input id="classname" name="classname" placeholder="Class name"  /><br>
+				<input type="button" id="registrationbtn1" value="Register" />
+				
+			</form>
+					<div id="user" class="alert alert-success"></div>
+
+		 </div>
+		 <div id="showaddform">
+		<div class="panel-group">
+			<div class="panel panel-info">
+		      <div class="panel-heading">Add your move</div>
+			   <form id="addmoveform">
+			   <div class="form-group">
+					<label for="definiton">Activity:</label>
+					<select class="form-control" id="definition">
+						<option>Dancing</option>
+						<option>Football</option>
+						<option>Ice Hockey</option>
+						<option>Judo</option>
+						<option>Other</option>
+						<option>Running</option>
+					</select>
+				</div>
+				<div class="form-group">
+				<label for="activitytype">Complexity:</label>
+				<select class="form-control" id="activitytype">
+						<option>easy</option>
+						<option>medium</option>
+						<option>hard</option>
+						</select>
+				</div>
+				
+				<div class="form-group">
+					<label for="duration">Duration:</label>
+					<select class="form-control" id="duration">
+						<option>10</option>
+						<option>20</option>
+						<option>30</option>
+						<option>40</option>
+						<option>50</option>
+						<option>60</option>
+						<option>70</option>
+						<option>80</option>
+					</select>
+				</div>
+				
+				<div class="form-group">
+					<input type="button" class="btn btn-primary btn-block" id="addmovebtn" value="Save my move" />
+				</div>
+			   </form>
+			</div><!--panel-->
+		</div><!--panel-group-->
+	
+		</div>
+		 <div id="showaddcontact"><p><input type="button" id="dailymoves" value="Activties" />
+		 <input type="button" id="showcontacts" value="Friends" /></p></div>
+		 <div id="content">
+		 <div id="user" class="alert alert-success"></div>
+		 </div>
+		   <div id="results"></div>
+			  <div id="daily" class="progress"></div>
+		 <div id="reg"></div>
+		 <div id="showlogout"><p><input type="button" id="logoutbtn" value="Logout" /></p></div>
+            <div id="deviceready" class="blink">
+                <p class="event listening">READY FOR THE DAY?</p>
+            </div>
+        </div>
+        <script type="text/javascript" src="js/bootstrap.min.js"></script>
+	<script type="text/javascript" src="cordova.js"></script>
+    <script type="text/javascript" src="js/index.js"></script>
+    </body>
+</html>

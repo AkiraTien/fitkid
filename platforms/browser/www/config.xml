@@ -1,0 +1,21 @@
+<?xml version='1.0' encoding='utf-8'?>
+<widget id="login.login" version="1.0.0" xmlns="http://www.w3.org/ns/widgets" xmlns:cdv="http://cordova.apache.org/ns/1.0">
+    <name>Fit Kid</name>
+    <description>
+		Mobile app
+	</description>
+    <author email="evgenii.khudnev@edu.lapinamk.fi" href="https://github.com/muqeet12/kid-fit">
+		Lucky13 development team
+	</author>
+    <content src="index.html" />
+    <access origin="*" />
+    <allow-navigation href="*" />
+    <allow-intent href="http://*/*" />
+    <allow-intent href="https://*/*" />
+    <allow-intent href="tel:*" />
+    <allow-intent href="sms:*" />
+    <allow-intent href="mailto:*" />
+    <allow-intent href="geo:*" />
+    <preference name="SplashScreen" value="img/children.gif" />
+    <preference name="SplashScreenDelay" value="3000" />
+</widget>

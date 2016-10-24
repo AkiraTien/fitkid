@@ -1,5 +1,6 @@
 (function () {
     "use strict";
+	var localServerPath="http://192.168.1.10/mobileAPI/"; //Server address + folder for PHP-scripts there
     document.addEventListener( 'deviceready', onDeviceReady.bind( this ), false );
 
     function onDeviceReady() {
@@ -7,32 +8,27 @@
         document.addEventListener( 'pause', onPause.bind( this ), false );
         document.addEventListener( 'resume', onResume.bind( this ), false );
       // TODO: Cordova has been loaded. Perform any initialization that requires Cordova here.
-        firststate();
-		//check if login is already done
+        firststate(); //function for first screen
 		
-		/*if(localStorage.length!=0){
-			var islogged=localStorage.getItem("name");
-			$("#showloginform").hide();
-			$("#contactform").hide();
-			$("#showaddcontact").show();
-			$("#showcontacts").hide();
-			$("#content").load("main.html");
-			$("#sayhello").html("<h1>Hello " + islogged + "</h1>");
-			getContacts();
-		}else{
-			$("#showlogout").hide();
-			$("#showaddcontact").hide();
-			$("#contactform").hide();*/
 		
 		
 		//when "Registration" -button is clicked		
 		$("#Registrationbtn").click(function(event){
 			registration();
 		});
+		//when "Register" -button is clicked		
+		$("#registrationbtn1").click(function(event){
+			registrationbtn1();
+		});
 		//when "Login" -button is clicked		
 		$("#loginbtn1").click(function(event){
 			login1();
 		});
+		//when "Save my move" -button is clicked		
+		$("#addmovebtn").click(function(event){
+			savemove();
+		});
+		
 		//when "Login" -button is clicked		
 		$("#loginbtn").click(function(event){
 			login();
@@ -59,93 +55,118 @@
 	
 	
 	  
-	  
+	  //function shows login or registration div
 	  function firststate()
 	  
 	  {
 		  $("#loginorregistration").show();
 			$("#showloginform").hide();
-			$("#contactform").hide();
+			$("#showaddform").hide();
 			$("#showaddcontact").hide();
 			$("#showlogout").hide();
+			$("#showregistrationform").hide();
 			
 	  };
+	  
+	  //function shows registration form
+	  function registration(){
+		  $("#loginorregistration").hide();
+			$("#showloginform").hide();
+			$("#showaddform").hide();
+			$("#showaddcontact").hide();
+			$("#showlogout").hide();
+			$("#showregistrationform").show();
+	  };
+	  //function shows login form
 	function login1(){
 		 $("#loginorregistration").hide();
 			$("#showloginform").show();
-			$("#contactform").hide();
+			$("#showaddform").hide();
 			$("#showaddcontact").hide();
 			$("#showlogout").hide();
+			$("#showregistrationform").hide();
 	};
 	
-	 /* function checkConnection() {
-		var networkState = navigator.connection.type;
- 		var states = {};
-		states[Connection.UNKNOWN]  = 'Unknown connection';
-		states[Connection.ETHERNET] = 'Ethernet connection';
-		states[Connection.WIFI]     = 'WiFi connection';
-		states[Connection.CELL_2G]  = 'Cell 2G connection';
-		states[Connection.CELL_3G]  = 'Cell 3G connection';
-		states[Connection.CELL_4G]  = 'Cell 4G connection';
-		states[Connection.CELL]     = 'Cell generic connection';
-		states[Connection.NONE]     = 'No network connection';
-		if(states[networkState]=='No network connection'){
-			$("#nonetwork").html('No network available at the moment!');
-			$("#main").hide();
-		}else{
-			$("#nonetwork").hide();
-			$("#main").show();
-			main();
-		}
-	}
-	function main(){
-		if(localStorage.length!=0){
-			var user=JSON.parse(localStorage.getItem("user"));
-			var welcomemsg='<h2>Hello ' + user.student[0].firstname + ' ' +  user.student[0].lastname  + '!</h2>';
-			$("#showlogin").hide();
+		//function sends registration data to DB (not fixed yet)
+		 function registrationbtn1(){
+		$("#content").html('Login...');
+		$.post(localServerPath+"insert_contact.php",{
+			username1:$("#username1").val(),
+			password1:$("#password1").val(),
+			firstname:$("#firstname").val(),
+			lastname:$("#lastname").val(),
+			phone:$("#phone").val(),
+			email:$("#email").val(),
+			school:$("#school").val(),
+			classname:$("#classname").val()
+		},function(data){
+					
+			if(data!='Error'){
+				$("#content").html('Registration done!');
+			
+				$("#loginorregistration").hide();
+			$("#showloginform").show();
 			$("#showaddform").hide();
-			$("#content").show();
-			$("#user").html(welcomemsg);
-			mymoves();
+			$("#showaddcontact").hide();
+			$("#showlogout").hide();
+			$("#registrationform").hide();
 		}else{
-			$("#showlogin").show();
-			$("#content").hide();
-		}
-	}*/
-	
-		
-    function login(){
-			var loginname=$("#username").val();
-			var loginpw=$("#password").val();
-			var dataString="username="+loginname+"&password="+loginpw;
-			var msg='';
-			$("#content").html("Login...");
-			$.ajax({
-				type: "POST",
-				url:"http://192.168.1.10/mobileAPI/login_rekisteri.php",
-				data: dataString,
-				crossDomain: true,
-				cache: false,
-				beforeSend: function(){ $("#content").val('Connecting...');},
-				error: function(){$("#content").html("Ajax error");},
-				success: function(data){
-						if(data!="Error"){
-							$("#content").html("Login ok");
-							$("#showloginform").fadeOut(2000);
-							setTimeout(function(){
-								localStorage.setItem("name",data);
-								showMain();
-							},2000);
-						}
-						else if(data=="Error"){
-							$("#content").html("Login error");
-							document.getElementById("loginform").reset();
-						}
-				}
-			});
-			return false;
+				$("#content").html('Login error');	
+				$("#showlogout").hide();
+			$("#showaddcontact").hide();
+			$("#showaddform").hide();		
+			$("#loginorregistration").hide();
+			}
+		});
 	};
-
+		
+	//function sends login and pwd to server
+     function login(){
+		$("#content").html('Login...');
+		$.post(localServerPath+"login_rekisteri.php",{
+			username:$("#username").val(),
+			password:$("#password").val()
+		},function(data){
+			if(data!='Error'){
+				$("#content").html('Login ok!');
+							
+		localStorage.setItem("test", data); //It's saved!
+var test = localStorage.getItem("test"); //Let's grab it and save it to a variable
+			
+				$("#loginorregistration").hide();
+			$("#showloginform").hide();
+			$("#showaddform").show();
+			$("#contactform").show();
+			$("#showaddcontact").show();
+			$("#showlogout").show();
+		}else{
+				$("#content").html('Login error');	
+				$("#showlogout").hide();
+			$("#showaddcontact").hide();
+			$("#contactform").hide();	
+			$("#showaddform").hide();			
+			}
+		});
+		$("#loginform").trigger("reset");
+		
+	};
+	
+	function savemove(){
+var test = localStorage.getItem("test")
+		$.post(localServerPath+"savemymove.php",{
+			username:(test),
+			activitytype:$("#activitytype").val(),
+			duration:$("#duration").val(),
+			definition:$("#definition").val()
+		},function(data){
+			alert('Your move was saved! ');
+			$("#showaddform").hide();
+			/*mymoves();*/
+		});
+		$("#addmoveform").trigger("reset");
+	};
+	
+//function for logout
 	function logout(){
 		localStorage.clear();
 		$("#content").html("Logged out. Please login to use.");
@@ -158,6 +179,7 @@
 		return false;
 	};
 	
+	//might be useful later
 	function showMain(){
 		getContacts();
 		$("#content").load("main.html");
@@ -168,9 +190,10 @@
 		$("#contactform").hide();
 	}
 	
+	//also
 	function getContacts(){
 		$.ajax({
-			url: "192.168.1.10/mobileAPI/getContacts.php",
+			url: "http://192.168.1.10/mobileAPI/getContacts.php",
 			dataType: 'json',
 		})
 		.done(function(data){
@@ -184,33 +207,6 @@
 		});
 	};
 	
-	function addContact(){
-		$("#showcontacts").show();
-		$("#contacts").html('');
-		$("#contactform").show();
-		
-	};
-	
-	function saveContact(){
-		var msg='';
-		$.post("192.168.1.10/mobileAPI/insert_contact.php",{
-				firstname:$("#firstname").val(),
-				lastname:$("#lastname").val(),
-				email:$("#email").val()
-		},function(data){
-			if(data=='OK'){
-				$("#addcontactForm").trigger("reset");
-				msg='<h3>Contact saved!</h3>';
-				$("#addresult").html(msg);
-				setTimeout(function(){
-						$("#contactform").hide();
-						showMain();
-					},2000);
-			}else{
-				$("#addresult").html('<h3>Error in saving contact</h3>');
-			}
-		});
-	};	
 	
     function onPause() {
         // TODO: This application has been suspended. Save application state here.

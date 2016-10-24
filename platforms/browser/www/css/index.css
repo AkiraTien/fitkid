@@ -1,0 +1,79 @@
+
+* {
+    -webkit-tap-highlight-color: rgba(0,0,0,0); /* make transparent link selection, adjust last value opacity 0 to 1.0 */
+}
+
+body {
+    -webkit-touch-callout: none;                /* prevent callout to copy image, etc when tap to hold */
+    -webkit-text-size-adjust: none;             /* prevent webkit from resizing text to fit */
+    -webkit-user-select: none;                  /* prevent copy paste, to allow, change 'none' to 'text' */
+    background-attachment:fixed;
+    margin:0px;
+	 font-size:18px;
+	font-family: Monospace;
+    padding:0px;
+    text-transform:uppercase;
+	background-color: #CEF6CE;
+}
+img {
+    display: block;
+    margin: auto;
+     max-width: 100%;
+    height: auto;
+}
+
+input[type=button]
+ {
+  display: inline-block;
+  border-radius: 4px;
+  background-color:#006600;
+  border: 3px gray;
+  color: white;
+  text-align: center;
+  font-size: 14px;
+  font-family: Monospace;
+  font-weight: bold;
+  padding: 10px;
+  width: 165px;
+  transition: all 0.5s;
+  cursor: pointer;
+  margin: 5px;
+}
+
+.app {
+	position: absolute;
+	display:block;
+    width: 100%;
+    padding: 0px;
+	text-align: center;
+}
+form {
+  display:block;
+  font-family: Monospace;
+  padding: 20px, 20px;
+  margin:5px;
+  font-size: 13px;
+  background-color:#D8D8D8;
+  line-height: 20px;
+  font-weight: bold;
+  border: 2px solid #088A08;
+    border-radius: 4px;
+}
+h1 {
+    font-size:38px;
+    font-weight: bold;
+	font-family: Monospace;
+	background-color:#088A08;
+	margin:0px;
+    padding:5px;
+    text-align:center;
+	color: white;
+}
+h2 {
+    font-size:15px;
+    font-weight: bold;
+	font-family: Monospace;
+	margin:2px;
+    padding:5px;
+    text-align:center;
+}
